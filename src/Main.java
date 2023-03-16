@@ -15,13 +15,18 @@ public class Main {
 
 
         InfoCollector info = new InfoCollector(schools, students, subjects);
-        info.printSchoolCities();
+        //info.printSchoolCities();
         //info.printMarksPerSubject();
-        info.printMarksPerStudentID(0, 1);
+       /* info.printMarksPerStudentID(0, 1);
         info.printMarksPerStudentID(1, 1);
         info.printMarksPerStudentID(2, 2);
-        info.printMarksPerStudentID(3, 0);
+        info.printMarksPerStudentID(3, 0);*/
+        System.out.println(info.getSchoolStudents());
+        info.printMarksPerStudentID(1,2);
         info.printMarksforSubjectID(4);
+        info.printMarksforSubjectID(6);
+        //info.printMarksPerSchool(2);
+
 
 
     }

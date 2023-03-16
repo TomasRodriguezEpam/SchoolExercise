@@ -141,11 +141,6 @@ public class InfoCollector {
     }
 
 
-    public Map<Subject, Double> getAverageMarkPerSubject(Subject[] subjects, Student[] students) {
-
-        return null;
-
-    }
 
     public static List<List<HashMap<Subject, Double>>> getSubjectsAndMarks() {
 
