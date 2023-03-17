@@ -21,14 +21,14 @@ public class InfoCollector {
 
     public List<String> getSchoolNames() {
 
-        return schools.stream().map(school -> school.getSchoolName()).collect(Collectors.toList());
+        return schools.stream().map(school -> school.getName()).collect(Collectors.toList());
 
     }
 
     public void printSchoolCities() {
 
         for(School sch : schools){
-            System.out.println("--- University --- \n" + sch.getSchoolName() + " in : \n" + sch.getSchoolCity());
+            System.out.println("--- University --- \n" + sch.getName() + " in : \n" + sch.getCity());
         }
 
     }
@@ -36,15 +36,15 @@ public class InfoCollector {
     public List<List<String>> getSchoolStudents() {
 
         // schools.stream().map(school -> school.getSchoolName()).forEach(System.out::println);
-        List<List<String>> result = schools.stream().map(school -> school.studentsList.stream().map(student -> student.getStudentFullName()).collect(Collectors.toList())).collect(Collectors.toList());
-
+        List<List<String>> result = schools.stream().map(school -> school.studentsList.stream().map(student -> student.getName()).collect(Collectors.toList())).collect(Collectors.toList());
+        //List<String> ggg = result.stream().flatMap(Collection::stream).toList();
         return result.stream().collect(Collectors.toList());
     }
 
     public void printMarksAllStudents() {
         try {
             for (int i = 0; i < schools.size(); i++) {
-                for (int j = 0; j < 3; j++) {
+                for (int j = 0; j < students.length/schools.size(); j++) {
                     String school1 = getSchoolNames().get(i);
                     List<String> student1 = Collections.singletonList(getSchoolStudents().get(i).get(j));
                     HashMap<Subject, Double> map1 = getSubjectsAndMarks().get(i).get(j);
@@ -112,7 +112,7 @@ public class InfoCollector {
             double averagePerSubject = mark.stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
-            System.out.println("Subject : " + subjects[k].getSubjectName() + " average marks are : " + mark + " \n Average is : " + (double) Math.round(averagePerSubject / students.length * 100) / 100 + " ");
+            System.out.println("Subject : " + subjects[k].getName() + " average marks are : " + mark + " \n Average is : " + (double) Math.round(averagePerSubject / students.length * 100) / 100 + " ");
             mark.clear();
         }
     }
@@ -132,7 +132,7 @@ public class InfoCollector {
             double averagePerSubject = mark.stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
-            System.out.println("Subject : " + subjects[subjectID].getSubjectName() + " marks are : " + mark + " \n Average is : " + (double) Math.round(averagePerSubject / students.length * 100) / 100 + " ");
+            System.out.println("Subject : " + subjects[subjectID].getName() + " marks are : " + mark + " \n Average is : " + (double) Math.round(averagePerSubject / students.length * 100) / 100 + " ");
             mark.clear();
         }catch(IndexOutOfBoundsException | NullPointerException i){
             System.out.println("No such Subject ID exists");
