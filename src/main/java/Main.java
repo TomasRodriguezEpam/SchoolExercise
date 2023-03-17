@@ -6,20 +6,8 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-
-       /* //info.printSchoolCities();
-        //info.printMarksPerSubject();
-       *//* info.printMarksPerStudentID(0, 1);
-        info.printMarksPerStudentID(1, 1);
-        info.printMarksPerStudentID(2, 2);
-        info.printMarksPerStudentID(3, 0);*//*
-        System.out.println(info.getSchoolStudents());
-        info.printMarksPerStudentID(1,5);
-        info.printMarksforSubjectID(4);
-        info.printMarksforSubjectID(6);
-        //info.printMarksPerSchool(2);
-        info.printMarksAllSubjects();
-*/
+        addingSchools();
+        addingStudents();
 
 
     }
@@ -35,18 +23,18 @@ public class Main {
     }
 
     public static ArrayList<Student> addingStudents() {
-        Student john = new Student("John", "Nash", 25);
-        Student bill = new Student("Bill", "Gates", 25);
-        Student mary = new Student("Mary", "Garcia", 20);
-        Student james = new Student("James", "Bond", 99);
-        Student mike = new Student("Michael", "Jordan", 19);
-        Student tom = new Student("Tommy", "Rodriguez", 45);
-        Student yev = new Student("Yevhenii", "Ostashko", 22);
-        Student rocky = new Student("Sylvester", "Rocky", 52);
-        Student toni = new Student("Toni", "Kroos", 37);
-        Student lio = new Student("Lionel", "Messi", 36);
-        Student jen = new Student("Jenson", "Button", 45);
-        Student lew = new Student("Lewis", "Hamilton", 35);
+        Student john = new Student("John", "Nash", 25, setRandomMarks(addingSubjects()));
+        Student bill = new Student("Bill", "Gates", 25, setRandomMarks(addingSubjects()));
+        Student mary = new Student("Mary", "Garcia", 20, setRandomMarks(addingSubjects()));
+        Student james = new Student("James", "Bond", 99, setRandomMarks(addingSubjects()));
+        Student mike = new Student("Michael", "Jordan", 19, setRandomMarks(addingSubjects()));
+        Student tom = new Student("Tommy", "Rodriguez", 45, setRandomMarks(addingSubjects()));
+        Student yev = new Student("Yevhenii", "Ostashko", 22, setRandomMarks(addingSubjects()));
+        Student rocky = new Student("Sylvester", "Rocky", 52, setRandomMarks(addingSubjects()));
+        Student toni = new Student("Toni", "Kroos", 37, setRandomMarks(addingSubjects()));
+        Student lio = new Student("Lionel", "Messi", 36, setRandomMarks(addingSubjects()));
+        Student jen = new Student("Jenson", "Button", 45, setRandomMarks(addingSubjects()));
+        Student lew = new Student("Lewis", "Hamilton", 35, setRandomMarks(addingSubjects()));
 
         Student[] students = {john, bill, mary, james, mike, tom, yev, rocky, toni, lio, jen, lew};
 
@@ -72,6 +60,7 @@ public class Main {
     }
 
     public static HashMap<Subject, Double> setRandomMarks( ArrayList<Subject> randomMarks) {
+
         HashMap<Subject,Double> result = new HashMap<>();
 
         Random rand = new Random(10000);
@@ -81,7 +70,7 @@ public class Main {
 
 
         for (int i = 0; i < randomMarks.size(); i++) {
-            result.put(randomMarks.get(i), (double) (Math.round(rand.nextDouble(10)*100)/100));
+            result.put(randomMarks.get(i), (double) (Math.round(rand.nextDouble(3,10)*100)/100));
         }
 
         return result;
