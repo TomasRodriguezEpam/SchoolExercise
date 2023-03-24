@@ -13,10 +13,8 @@ public class InfoCollector {
     public Subject[] subjects;
     public Student[] students;
 
-    public InfoCollector(School[] school, Student[] students, Subject[] subjects) {
-        this.students = students;
-        this.subjects = subjects;
-        this.schools = Arrays.asList(school);
+    public InfoCollector(List<School> schools) {
+        this.schools  = schools;
     }
 
     public List<String> getSchoolNames() {
@@ -41,21 +39,23 @@ public class InfoCollector {
         return result.stream().collect(Collectors.toList());
     }
 
-    public void printMarksAllStudents() {
+ /* public void printMarksAllStudents() {
+
         try {
-            for (int i = 0; i < schools.size(); i++) {
-                for (int j = 0; j < students.length/schools.size(); j++) {
-                    String school1 = getSchoolNames().get(i);
-                    List<String> student1 = Collections.singletonList(getSchoolStudents().get(i).get(j));
-                    HashMap<Subject, Double> map1 = getSubjectsAndMarks().get(i).get(j);
-                    System.out.println("\n\nStudent : " + student1 + " in " + school1 + " received this marks:" + map1 + "\n Average Result: " + (double) Math.round(getAverageMark(j) * 100) / 100 + " \n\n\n");
-                }
+
+                    System.out.println
+                            ("\n\nStudent : " + student1 + " in " + school1 +
+                                    " received this marks:" + map1 +
+                                    "\n Average Result: " +
+                                    (double) Math.round(getAverageMark(j) * 100) / 100 + " \n\n\n");
+
             }
-        } catch (IndexOutOfBoundsException | NullPointerException npe) {
+         catch (IndexOutOfBoundsException | NullPointerException npe) {
+            System.out.println("index, out of bounds");
             return;
         }
-    }
-
+    }*/
+ /*
     public void printMarksPerSchool(int schoolID) {
 
         try {
@@ -85,10 +85,10 @@ public class InfoCollector {
         }
     }
 
-
+*/
     public static double getAverageMark(int studentID) {
 
-        HashMap<Subject, Double> map1 = getSubjectsAndMarks().get(0).get(studentID);
+        Map<Subject, Double> map1 = getSubjectsAndMarks().get(0).get(studentID);
         List<Double> marks = map1.values().stream().collect(Collectors.toList());
         int numberOfSubjects = marks.size();
         if (numberOfSubjects == 0) return 0;
@@ -97,7 +97,7 @@ public class InfoCollector {
                 .sum() / numberOfSubjects;
 
     }
-
+/*
     public void printMarksAllSubjects() {
         ArrayList<Double> marksSubject = new ArrayList<>();
         List<Double> mark = new ArrayList<>();
@@ -142,10 +142,17 @@ public class InfoCollector {
 
 
 
-    public static List<List<HashMap<Subject, Double>>> getSubjectsAndMarks() {
+*/
+    public static List<List<Map<Subject, Double>>> getSubjectsAndMarks() {
 
-        List<List<HashMap<Subject, Double>>> result =
-                schools.stream().map(school -> school.studentsList.stream().map(student -> student.marksPerSubject).collect(Collectors.toList())).collect(Collectors.toList());
+        List<List<Map<Subject, Double>>> result =
+              schools
+                      .stream()
+                      .map(school -> school.studentsList.stream()
+                              .map(student -> student
+                                      .marksPerSubject)
+                              .collect(Collectors.toList()))
+                      .collect(Collectors.toList());
         return result.stream().collect(Collectors.toList());
     }
 

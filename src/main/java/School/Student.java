@@ -15,7 +15,7 @@ public class Student {
     private String name;
     private String surname;
     private int age;
-    public HashMap<Subject, Double> marksPerSubject = new HashMap<>();
+    public Map<Subject, Double> marksPerSubject = new HashMap<>();
 
     public Student(String name, String surname, int age) {
         this.name = name;

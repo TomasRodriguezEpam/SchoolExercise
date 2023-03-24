@@ -16,7 +16,7 @@ public class School {
 
     private String name;
     private String city;
-    public ArrayList<Student> studentsList = new ArrayList<>();
+    public List<Student> studentsList = new ArrayList<>();
 
 
     //constructor
